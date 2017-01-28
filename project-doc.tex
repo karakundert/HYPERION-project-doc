@@ -1,0 +1,312 @@
+\documentclass[11pt]{report}
+\newcommand{\thetitle}{HYPERION Project Book}
+\newcommand{\theauthor}{Kara Kundert}
+\newcommand{\theauthorsemail}{kkundert@berkeley.edu}
+\newcommand{\thedate}{Spring 2017}
+% the following controls some aspects of how the text is displayed on the page
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.25in}
+\setlength{\oddsidemargin}{0in}
+
+% set up the page headers and footers
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \lhead{\sffamily\slshape\small\thetitle}
+    \rhead{\sffamily\small\theauthor}
+    \cfoot{\sffamily\slshape\small\thepage}
+
+% support display of graphics
+\usepackage{graphicx}
+
+% the following control some aspects of how paragraphs are displayed
+\parindent=0pt
+\parskip=2ex
+
+% import library of technical symbols
+\usepackage{amsmath,amssymb,latexsym}
+
+% import bibliography tools
+\usepackage{natbib}
+\citestyle{aa}
+
+\begin{document}
+% print the title in san-serif font, in bold, in huge characters
+\title{
+    \sffamily\bfseries\huge
+    \thetitle \\
+}
+% print the author in san-serif font
+\author{
+    \sffamily\theauthor \\
+    \sffamily\theauthorsemail
+}
+\date{\thedate}
+\maketitle
+\sloppy
+
+\tableofcontents{}
+
+\chapter{Introduction}
+
+\section{Purpose}
+
+The HYPERION Project Book aims to provide a complete overview of the HYPERION 
+project, including current progress and future goals.
+
+\section{Overview}
+
+The Hydrogen Probe of the Epoch of Reionization (HYPERION) is a specialized 
+low-frequency interferometer to study the Epoch of Reionization through the 
+spatial monopole of the 21cm brightness temperature of neutral hydrogen as a 
+function of redshift (i.e. the ``global signal"). It is being developed at the 
+University of California, Berkeley in the Radio Astronomy Laboratory. It is 
+being funded through the NSF Faculty Early Career Development (CAREER) Grant 
+awarded to Aaron Parsons (Award No. 1352519).
+
+\subsection{Science}
+
+The goal of HYPERION is to detect the monopole reionization signal. A detection 
+of this signal could give key insights into the physics and development of our 
+early universe, including information on the formation of the first stars and 
+galaxies.
+
+Refer to~\citep{pritchard-loeb2010, pritchard-loeb2012, gnedin2004}.  
+
+\subsection{Design}
+
+The Epoch of Reionization is one of the most exciting frontiers of modern day 
+cosmology, and one of the most challenging to explore. Over the past ten years, 
+astronomers have sought to detect the Epoch of Reionization with many different 
+experiments, and primarily focused on using redshifted 21cm emissions to map 
+out this period of the universe's history.  In the case of PAPER and HERA, 
+astronomers have built specialized low-frequency interferometers in order to 
+observe the overall power spectrum of hydrogen in the early universe.  The 
+interferometric honeycomb design of HERA also enables the observer to 
+potentially image growing ionization bubbles throughout the Epoch of 
+Reionization. The LOFAR instrument also seeks to measure this signal through a 
+more generalized instrument, with much longer baselines (on the order of 
+kilometers compared to PAPER/HERA's baselines, which are on the order of 
+decameters). 
+
+Astronomers have also sought to measure the sky-averaged 21cm signal, as a way 
+of quantifying the overall neutral hydrogen content in the universe through the 
+use of specialized single-dish experiments. The single dish is an important, if 
+fraught, design choice as it enables direct sampling of the spatial monopole 
+21cm signal (i.e. the all-sky average signal). The trouble with single dish 
+experiments is that it is extremely difficult to effectively calibrate every 
+source of noise that the instrument itself contributes to the overall system 
+noise, particularly in cases where that noise is frequency dependent. One of 
+the main benefits of interferometric designs is that the vast majority of 
+instrumental noise largely averages itself out, which abates the very strict 
+calibration requirements demanded by Epoch of Reionization studies.
+
+The trouble with using an interferometer to observe the 21cm global signal is 
+that, speaking from a purely Fourier background, an interferometer cannot be 
+used to directly sample the monopole term, as interferometers work by imposing 
+spatial frequencies across the sky which are then combined to form images. It 
+is clear that a monopole signal, such as the 21cm global signal of 
+reionization, would integrate to zero over any set of observed spatial 
+frequencies, in the case of a perfect interferometer able to sample every mode 
+and see the full 360$^\circ$ sky.  However, HYPERION will circumnavigate this 
+issue by using absorber baffles to impose an artificial horizon on the sky.  
+This horizon interrupts the flat nature of the spatial monopole, which creates 
+leakage from the DC-mode into modes with non-zero interferometric spacings.  As 
+discussed in~\cite{presley2015}, the optimal spacing between elements is 
+approximately one wavelength. While the baffle structure will likely force a 
+larger separation, one consideration to be made during design is ensuring that 
+the spacing remains as tightly packed as possible to maximize our sensitivity 
+to the monopole term.
+
+Refer to~\citep{presley2015, liu2013, venumadhav2016} for more rigorous 
+treatments of the above design parameters.
+
+\chapter{Requirements and Specifications}
+
+These are the requirements and specifications of the HYPERION instrument. 
+
+The antennas will be constructed with a frequency range of 35.36 -- 141.2 MHz 
+and a science band of 50 -- 100 MHz. This frequency range optimizes the ability 
+to see the change in the 21cm global signal temperature as a function of 
+frequency, as can be seen in Fig. 9 of~\citep{pritchard-loeb2010}. 
+
+The brightness temperature of the galaxy is very high in our science band, with 
+T$_{sky}$ = 2000 K with an observing frequency of $\nu = 70$ MHz. Factoring in 
+the absorber baffle structure and a renormalization to keep T$_{21}$ constant, 
+the artificial horizon imposed by the absorber baffles must let in at least 
+$20\%$ of the sky in order to maintain a system temperature T$_{sys} < 6000$ 
+K~\citep{kundert2016}.  This same test indicated that the amplifier temperature 
+is a relatively small contributor to the overall system temperature, and no 
+special measures need to be taken to minimize it.
+
+The ADC needs at least -5.5dBm in order to get RMS counts of 12.5 with Gaussian 
+noise. Assuming $10\%$ return loss, the antenna will be receiving between 
+-87.95 dBm at $\nu = 50$ MHz to -95.48 at $\nu = 100$ MHz. This leads to a 
+requirement for at least 18dB of gain~\citep{day2016}.
+
+Refer to~\citep{sys-specs, kundert2016}.
+
+\chapter{Architecture}
+
+This is the overall architecture and work breakdown structure (WBS) of the 
+HYPERION instrument.
+
+\section{Element}
+
+\subsection{Overview}
+
+using styrofoam as base for antenna with dielectric constant $\kappa \simeq 1$, 
+needs to be painted with latex/water-based paint due to UV instability
+
+\subsection{Requirements}
+
+\subsection{Antenna}
+
+\subsubsection{Overview}
+
+Need an antennas design with a frequency independent broadband beam, frequency 
+range of antenna design is 35.36 - 141.42 MHz in order to have flat response 
+and minimize edge effects across science band of 50-100 MHz.
+
+Review~\citep{sys-specs}.
+
+\subsubsection{Requirements}
+
+\subsection{Absorber}
+
+Need about 10 dB attenuation for reflective components, need at least 33 dB 
+attenuation for diffractive and transmissive components (diffraction over top 
+of baffles, transmission between antennas/baffles)
+
+\subsubsection{Overview}
+
+\subsubsection{Requirements}
+
+\subsection{Work}
+
+\subsubsection{Needs Doing}
+\begin{itemize}
+ \item finalize antenna design and logistics
+ \item simulate baffle structures to determine beam shaping properties
+ \item finalize baffle design and logistics
+ \item determine absorber properties -- ferrite, foam, resistive mesh, 
+  charcoal...
+ \item take beam measurements
+ \item CEM model antenna + ground -- determine best height for antenna to stand
+ \item CEM model antenna + absorptive ground -- what effects?
+ \item CEM model of absorber baffle structures
+ \item characterize fat dipole antenna characteristics -- return loss, beam 
+  shape and frequency dependence
+\end{itemize}
+
+\subsubsection{Already Completed}
+
+\section{Frontend}
+
+\subsection{Overview}
+
+PCB board + balun with 1:1 ratio, LNA with noise factor 1.1-1.2, voltage 
+regulator, plus various caps, resistors, inductors for (DC block?) and 
+impedance matching
+
+\subsection{Requirements}
+
+Refer to gain v. loss calculations, HYPERION sys specs doc, and HYPERION Memo 
+\#1
+
+\subsection{Receiver}
+
+\subsubsection{Overview}
+
+Two stage filtering (low pass and high pass filter x2, may be amplifier between 
+stages) + amplifier after filtering + bias-t (power the pcb board maybe) + any 
+needed attenuation + battery for receiver box
+
+\subsubsection{Requirements}
+
+Filter to science band, need enough gain (refer to gain v. loss calculations) 
+to get to -5.5dBm at ADC input (including cable loss)~\citep{day2016}.
+
+\subsection{Work}
+
+\subsubsection{Needs Doing}
+\begin{itemize}
+ \item PCB board design
+ \item figure out caps, resistors, inductors needed for matching
+ \item power distribution for board
+ \item design chassis (weatherproof)
+ \item figure out cable strain relief
+ \item design shielded chassis
+ \item figure out which amplifiers to use
+ \item figure out which low pass filter to use
+ \item figure if we need bias-t and if so, which to use
+ \item figure out power consumption of front end
+ \item order batteries
+ \item explore node design for receiver cards
+ \item look into EM properties of 3d printer filaments for chassis design
+ \item figure out array design and placement
+ \item hire electrical engineering masters student to design perfect match LNA 
+  to replace balun + LNA system?
+ \item maybe look into hiring undergrad for LNA design
+ \item work with Ali Niknejad to hire BWRC masters student to create custom LNA
+\end{itemize}
+
+\subsubsection{Already Completed}
+\begin{itemize}
+ \item order LNA and balun and LNA-balun boards
+ \item figure out which high pass filter to use in receiver box
+\end{itemize}
+
+\section{Backend}
+
+\subsection{Overview}
+
+Convert from analog to digital signal, SNAP board correlator, RF shielded box, 
+powered by battery
+
+\subsection{Requirements}
+
+RMS ADC counts of about 12
+
+\subsection{Work}
+
+\subsubsection{Needs Doing}
+\begin{itemize}
+ \item finalize correlator design (check Rachel PoCo documents? Eddie SNAP 
+  documents?)
+ \item power distribution network design
+ \item finish chassis design or order pre-made SNAP chassis (talk to SCI-HI 
+  folks)
+\end{itemize}
+
+\subsubsection{Already Completed}
+
+\section{Computing}
+
+\subsection{Overview}
+
+\subsection{Requirements}
+
+\subsection{Work}
+
+%\subsubsection{Needs Doing}
+
+\section{Analysis}
+
+\subsection{Overview}
+
+\subsection{Requirements}
+
+\subsection{Work}
+
+\subsubsection{Needs Doing}
+\begin{itemize}
+ \item do data analysis of PAPER-128 to search for global signal, set up 
+  initial tools
+\end{itemize}
+
+
+\bibliography{/home/kara/documents/hyperion/hyperion}{}
+\bibliographystyle{apj}
+
+\end{document}
+
